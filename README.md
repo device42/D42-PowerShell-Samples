@@ -14,6 +14,9 @@ $d42_url = "https://d42_url/api/1.0/devices/id/10482/"
 
 try {
    $result = Invoke-WebRequest -Uri $d42_url -Headers $d42_headers -Method Get
+   $json = $result | ConvertFrom-Json
+   Write-Output "Device Id = $($json.id)"
+   Write-Output "Device UUID = $($json.uuid)"
 } catch {
    $result = $_.Exception.Response.GetResponseStream()
    $reader = New-Object System.IO.StreamReader($result)
