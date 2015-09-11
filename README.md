@@ -5,6 +5,7 @@ Example script for running Windows PowerShell scripts against the Device42 API's
 ## Sample GET call using PowerShell
 The below sample shows how to do a simple GET request from Device42. Supply your credentials and url.
 
+```
 $d42_username = "d42_user"
 $d42_password = "d42_password"
 $d42_headers = @{"Authorization" = "Basic "+[System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($d42_username+":"+$d42_password ))}
@@ -18,4 +19,4 @@ try {
    $reader = New-Object System.IO.StreamReader($result)
    $responseBody = $reader.ReadToEnd();
 }
-
+```
