@@ -63,7 +63,7 @@ catch {
    $responseBody = $reader.ReadToEnd();
    Write-Output $responseBody
 }
-write-output "comlete"
+write-output "complete"
 ```
 
 ## Notes
@@ -71,4 +71,6 @@ Please substitute your Device42 credentials for *$d42_username* and *$d42_passwo
 
 Default results are in JSON format so use *ConvertFrom-Json* to get JSON object for easier data manipulation. 
 
-The *catch* block is used to handle errro results returned from Device42 and will be in JSON.
+If you see the following error: `"Error during serialization or deserialization using the JSON JavaScriptSerializer. The length of the string exceeds the value set on the maxJsonLength property."` You should be able to fix it by using the `$jsonserial.MaxJsonLength` property to increase the max JSON length to something like 67108864. See this [Technet](https://social.technet.microsoft.com/Forums/windowsserver/en-US/833c99c1-d8eb-400d-bf58-38f7265b4b0e/error-when-converting-from-json?forum=winserverpowershell&prof=required) thread for details. 
+
+The *catch* block is used to handle error results returned from Device42 and will be in JSON.
